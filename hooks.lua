@@ -7,7 +7,7 @@
 
 
 
-function OnPlayerBreakingBlock(a_Player, a_BlockX, a_BlockY, a_BlockZ, a_BlockFace, a_lockType, a_BlockMeta)
+function OnPlayerBreakingBlock(a_Player, a_BlockX, a_BlockY, a_BlockZ, a_BlockFace, a_BlockType, a_BlockMeta)
 	-- Check if the user should only be allowed to use survival with this plugin
 	if (g_Config.SurvivalOnly and not a_Player:IsGameModeSurvival()) then
 		return false
@@ -53,10 +53,9 @@ function OnPlayerBreakingBlock(a_Player, a_BlockX, a_BlockY, a_BlockZ, a_BlockFa
 	Collection:Finish()
 
 	if (g_Config.ReplantSapling) then
-			math.randomseed(os.time())
-			if (math.random() < g_Config.ReplantSaplingRate) then
-					World:SetBlock(a_BlockX, a_BlockY, a_BlockZ, E_BLOCK_SAPLING, GetSaplingMeta(BlockType, BlockMeta))
-			end
+		if (math.random() < g_Config.ReplantSaplingRate) then
+			World:SetBlock(a_BlockX, a_BlockY, a_BlockZ, E_BLOCK_SAPLING, GetSaplingMeta(BlockType, BlockMeta))
+		end
 	end
 
 end

@@ -22,6 +22,8 @@ function Initialize(a_Plugin)
 	
 	-- Load the config file
 	LoadSettings()
+	-- init random seed
+	math.randomseed(os.time())
 
 	cPluginManager:AddHook(cPluginManager.HOOK_PLAYER_BREAKING_BLOCK, OnPlayerBreakingBlock)
 	
